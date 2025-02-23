@@ -1,5 +1,5 @@
 
-<h1 style="color:blue; font-size: 48px;">HI! Welcome to Tohar's CLI</h1>
+# **HI! Welcome to Tohar's CLI**
 
 In this system you can remotely manage EC2, S3 and Route53 services in your AWS environment.
 
