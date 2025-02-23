@@ -1,0 +1,11 @@
+name: pul-209c966fc943d57e6f961738e475b7724e13ecaa
+description: python platform enginering
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python
