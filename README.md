@@ -19,6 +19,7 @@ Run the following command in your workspace:
 python get_user_input.py
 
 Then follow the steps written in the system!
-Good luck, and thank you for using Tohar's CLI
+
+# Good luck, and thank you for using Tohar's CLI
 
 
