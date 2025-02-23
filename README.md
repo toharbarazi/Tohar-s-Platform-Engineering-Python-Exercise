@@ -1,5 +1,5 @@
 
-# HI! Welcome to Tohar's CLI
+<h1 style="color:blue;">HI! Welcome to Tohar's CLI</h1>
 In this system you can remotely manage EC2, S3 and Route53 services in your AWS environment.
 
 To install the system follow these steps:
