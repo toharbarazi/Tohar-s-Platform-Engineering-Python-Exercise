@@ -1,6 +1,6 @@
 
-# HI! Welcome to Tohar's CLI
-![Badge](https://img.shields.io/badge/HI!%20Welcome%20to%20Tohar's%20CLI-blue)
+<h1 style="color:blue; font-size: 48px;">HI! Welcome to Tohar's CLI</h1>
+
 In this system you can remotely manage EC2, S3 and Route53 services in your AWS environment.
 
 To install the system follow these steps:
