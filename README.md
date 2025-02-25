@@ -129,23 +129,114 @@ It's recommended to use a virtual environment to manage project dependencies.
 
 ---
 
-## 6. Configure Pulumi
+## 6. Configure Pulumi (Detailed)
 
-- **Log in to Pulumi**:
+Pulumi uses the concept of **stacks** to manage different environments (e.g., development, staging, production). Each stack is an isolated instance of your infrastructure configuration.
+
+### 6.1. Log in to Pulumi
+
+First, log in to Pulumi using one of the following methods:
+- **Using Pulumi Service (recommended for beginners)**:
   ```bash
   pulumi login
   ```
+  This will prompt you to log in using a Pulumi account. If you don’t have one, you can create it for free at [Pulumi.com](https://app.pulumi.com).
 
-- **Initialize a New Stack**:
+- **Using Local File System (if you prefer not to use the Pulumi Service)**:
+  ```bash
+  pulumi login --local
+  ```
+  This saves Pulumi state files locally on your machine instead of in the Pulumi Cloud.
+
+---
+
+### 6.2. Initialize a New Stack
+
+Pulumi uses **stacks** to separate different instances of your infrastructure. For example, you might have separate stacks for development (`dev`), staging (`staging`), and production (`prod`).
+
+- **Create a New Stack**:
   ```bash
   pulumi stack init dev
   ```
+  In this example, we're creating a stack named `dev`. You can replace `dev` with another name if needed.
 
-- **Set the AWS Region**:
+- **Explanation**:
+  - This command initializes a new instance of the infrastructure defined in your project.
+  - A stack stores configuration values, secrets, and state data specific to that instance.
+  - You can create multiple stacks to manage different environments.
+  
+- **Check Existing Stacks**:
+  If you're unsure which stacks already exist or want to list all available stacks, use:
+  ```bash
+  pulumi stack ls
+  ```
+
+---
+
+### 6.3. Set Configuration Values
+
+Each stack can have its own configuration values. For this project, you need to specify the AWS region.
+
+- **Set AWS Region**:
   ```bash
   pulumi config set aws:region us-east-1
   ```
-  Replace `us-east-1` with your preferred AWS region.
+  Replace `us-east-1` with your preferred AWS region (e.g., `us-west-2`, `eu-central-1`, etc.).
+
+- **View Configuration Settings**:
+  To see all configuration settings for the current stack, use:
+  ```bash
+  pulumi config
+  ```
+
+---
+
+### 6.4. Selecting and Managing Stacks
+
+- **Select a Stack**:
+  If you have multiple stacks and want to switch between them:
+  ```bash
+  pulumi stack select dev
+  ```
+  Replace `dev` with the name of the stack you want to switch to.
+
+- **Remove a Stack**:
+  If you created a stack by mistake or no longer need it:
+  ```bash
+  pulumi stack rm dev
+  ```
+
+---
+
+### 6.5. Running Pulumi Commands
+
+Once the stack is initialized and configured, you can deploy your infrastructure:
+
+- **Preview the Changes**:
+  ```bash
+  pulumi preview
+  ```
+  This shows you what changes Pulumi will make to your infrastructure without actually applying them.
+
+- **Apply the Changes**:
+  ```bash
+  pulumi up
+  ```
+  This will create the resources defined in your project.
+
+- **Destroy the Stack**:
+  If you want to delete all resources created by Pulumi:
+  ```bash
+  pulumi destroy
+  ```
+
+---
+
+### 6.6. Important Notes
+
+- Pulumi relies on the **`__main__.py`** file to define the infrastructure.
+- Ensure your virtual environment is activated before running Pulumi commands.
+- Make sure your AWS credentials are properly configured using the `aws configure` command.
 
 ---
 
