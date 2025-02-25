@@ -23,18 +23,31 @@ def is_valid_ec2_name(name):
 
 
 
+
 def check_instance_exists(instance_id):
     # Initialize EC2 client
     ec2_client = boto3.client('ec2')
 
     try:
-        # Describe instances
+        # Describe the instance by ID
         response = ec2_client.describe_instances(InstanceIds=[instance_id])
 
         # Check if the instance exists
         if response['Reservations']:
             print(f"Instance {instance_id} exists.")
-            return True
+
+            # Get the tags of the instance
+            tags = response['Reservations'][0]['Instances'][0].get('Tags', [])
+
+            # Check if the instance has the required tag
+            for tag in tags:
+                if tag['Key'] == 'Platform' and tag['Value'] == 'CLI':
+                    print(f"Instance {instance_id} has the tag platform=CLI.")
+                    return True
+
+            print(f"Instance {instance_id} does not have the tag platform=CLI.")
+            return False
+
         else:
             print(f"Instance {instance_id} does not exist.")
             return False
