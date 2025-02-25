@@ -15,6 +15,9 @@ def number_of_instances():
         second_instance=config[0][1][0]
         create_ec2(first_instance)
         create_ec2(second_instance)
+    else:
+        instance=config[0][0]
+        create_ec2(instance)
 
 
 
